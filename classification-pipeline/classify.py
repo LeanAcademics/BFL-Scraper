@@ -109,7 +109,8 @@ def fmt_value(value):
 
 def format_user_message(record):
     """Format a BFL record as user message text. Excludes Name for privacy."""
-    lines = [f"{field}: {fmt_value(record.get(field))}" for field in STRUCTURED_FIELDS]
+    lines = ["Classify the following BASE jumping fatality report.\n"]
+    lines += [f"{field}: {fmt_value(record.get(field))}" for field in STRUCTURED_FIELDS]
     lines.append("")
     lines.append(f"Accident narrative:\n{record.get('Accident', 'Not reported')}")
     return "\n".join(lines)
