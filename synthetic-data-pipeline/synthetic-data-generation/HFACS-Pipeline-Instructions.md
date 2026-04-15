@@ -29,9 +29,9 @@ The narrative contains positive evidence that the fatal outcome resulted from fa
 
 002OC applies when the narrative supports one or more of the following:
 
-1. **Unforeseeable environmental event:** Unsafe conditions that were not identifiable as unsafe before or at the time of the jump, given what a competent BASE jumper could reasonably have assessed from the exit point. If the conditions were observable or forecastable before the jump and the jumper decided to jump anyway, the decision is a human error (001HE), not an other cause. 002OC applies only when the environmental factor was genuinely unforeseeable, such as sudden unexpected wind shear, a localized gust undetectable from the exit point, or a thermal event with no surface indicators.
+1. **Unforeseeable environmental event:** Unsafe conditions that were not identifiable as unsafe before or at the time of the jump, given what a competent BASE jumper could reasonably have assessed from the exit point. If the conditions were observable or forecastable before the jump and the jumper decided to jump anyway, the decision is a human error (001HE), not an other cause. 002OC applies only when the environmental factor was not reasonably be identifiable, such as sudden unexpected wind shear, a localized gust undetectable from the exit point, or a thermal event with no surface indicators.
 2. **Equipment failure independent of human error:** A material or mechanical failure of equipment that was not caused by the jumper's packing, rigging, assembly, maintenance, modification, or equipment selection. If the jumper packed incorrectly, misrigged, used inappropriate gear for the jump, or failed to maintain equipment, the equipment failure is a consequence of human error (001HE). 002OC applies only when the equipment was correctly packed, rigged, and maintained according to accepted practice, and the failure resulted from a manufacturing defect, material fatigue not detectable through normal inspection, or an inherent design limitation that the jumper could not reasonably have known about.
-3. **Other non-human cause:** Any other cause supported by positive evidence in the narrative where the jumper acted within accepted practice and the fatal outcome resulted from a factor the jumper could not reasonably have anticipated or controlled.
+3. **Other non-human cause:** Any other cause supported by positive evidence in the narrative where the jumper acted within accepted practice and the fatal outcome resulted from a factor the jumper could not reasonably have anticipated or controlled. This includes sudden medical events (cardiac arrest, stroke, seizure, loss of consciousness) where the jumper had no prior diagnosis or symptoms that would have indicated the risk. If the jumper had a known medical condition that made such an event foreseeable and chose to jump regardless, the decision to jump is a human error (001HE), not an other cause.
 
 ## 0.3 Insufficient Information (003II)
 
@@ -46,9 +46,9 @@ Return valid JSON only:
 ```
 
 
-# Layer 1: Unsafe Acts
+**Layer 1: Unsafe Acts**
 
-## Active Failure Test
+**Active Failure Test**
 
 A factor is coded at Layer 1 if its direct effect produced the fatal outcome. The question is: was this factor the mechanism through which the jumper died?
 
@@ -60,7 +60,7 @@ An omission that would merely have detected or prevented a separate producing fa
 
 When multiple factors are present, identify which factor or factors actually produced the fatal outcome through their own direct effect. These are coded at Layer 1. All other contributing factors are candidates for Layer 2.
 
-## Category Discrimination
+**Category Discrimination**
 
 Layer 1 has three categories of unsafe acts, distinguished by where the failure lies:
 
@@ -81,7 +81,7 @@ If the jumper decided to jump in adverse conditions that were observable before 
 The following labels are provided as reference. Report the most applicable label if one fits, or describe the decision error in your own terms.
 
 - **Wrong procedure applied:** The jumper applied an incorrect defined procedure to a recognized situation, such as the wrong emergency response to a malfunction type, or an incorrect packing configuration for the jump type.
-- **Poor judgment or risk acceptance:** The jumper selected an inappropriate course of action in a situation requiring judgment. This includes choosing to jump in conditions that exceed safe limits, selecting an object beyond the jumper's current ability, choosing a flight line with insufficient margin, attempting maneuvers without sufficient proficiency, or choosing to deploy at a dangerously low altitude.
+- **Poor judgment or risk acceptance:** The jumper selected an inappropriate course of action in a situation requiring judgment, This includes choosing to jump in conditions that exceed safe limits, selecting an object beyond the jumper's current ability, choosing a flight line with insufficient margin, attempting maneuvers without sufficient proficiency or choosing to deploy at a dangerously low altitude.
 - **Improvised response to novel situation:** The jumper faced a compound or cascading emergency for which no practiced procedure existed and devised a real-time solution that proved inadequate.
 
 ## 1.2 Skill-Based Errors (102S)
@@ -125,11 +125,11 @@ If 104II: L1_unsafe_acts is an empty array and L1_insufficient is true.
 
 
 
-# Layer 2: Preconditions for Unsafe Acts
+**Layer 2: Precondition for Unsafe Acts**
 
 The following unsafe acts were identified at Layer 1: **{L1 result inserted here}**
 
-## Precondition (Layer 2) Test
+**Precondition (Layer 2) Test**
 
 A factor is coded at Layer 2 if it contributed to or enabled the Layer 1 unsafe act identified above, but its own direct effect was not the mechanism that produced the fatal outcome.
 
@@ -142,7 +142,7 @@ Preconditions include:
 
 A precondition is coded only if it contributed to the specific Layer 1 unsafe act above. A factor that was present but did not contribute to the identified unsafe act is not coded.
 
-## Label Coding
+**Label Coding**
 
 Each Layer 2 subcategory contains reference labels that describe common preconditions in BASE jumping fatalities. When coding a precondition:
 
@@ -168,7 +168,7 @@ Failures in the jumper's attention management that negatively affected perceptio
 
 ### 2.1.2 State of Mind Conditions (201C2)
 
-Psychological or motivational states that affected the jumper's judgment or willingness to act prudently, contributing to the unsafe act. These are enduring or situational mental states, not attention management failures (which fall under Mental Awareness) or physiological impairments (which fall under Adverse Physiological Conditions). The following codes are provided as reference. Code according to Label Coding.
+Psychological or motivational states that affected the jumper's judgment or willingness to act prudently, contributing to the unsafe act. These are enduring or situational mental states, not attention management failures (which fall under Mental Awareness) or physiological impairments (which fall under Adverse Physiological Conditions).The following codes are provided as reference. Code according to Label Coding.
 
 - **Psychological Disorder:** A diagnosable psychological condition that impaired the jumper's judgment or decision-making capacity.
 - **Life Stressors/Emotional State:** External life circumstances (work, relationships, financial or legal stress, grief) impaired the jumper's cognitive performance or judgment on the day of the jump.
@@ -215,8 +215,8 @@ The jumper's training, experience, or currency was insufficient for the demands 
 
 Environmental factors that directly degraded the jumper's performance during execution and contributed to the identified Layer 1 unsafe act. Code 204E only if all three of the following conditions are met:
 
-1. The environmental factor was not the object of the jump decision. If the jumper decided to jump in adverse conditions that were observable before the jump, the environment is the content of a decision error at Layer 1 and is not coded here.
-2. The environmental factor degraded the jumper's performance during execution. The environment must have actively impaired the jumper's ability to perform, not merely been the setting in which an error occurred.
+1. The environmental factor is not already captured as the content of a Layer 1 decision error. If the environmental conditions are coded as the basis of a 101D act (e.g., the jumper decided to jump in observable strong winds, and the wind produced the fatal outcome), the same factor is not additionally coded as 204E. If the environmental factor contributed to a Layer 1 act of a different category (102S or 103O), it may be coded as 204E because L1 and L2 are describing different things: the error and the condition that degraded performance.
+2. The environmental factor degraded the jumper's performance during execution of the L1 factor. The environment must have actively impaired the jumper's ability to perform, not merely been the setting in which an error occurred.
 3. The environmental factor contributed to the specific Layer 1 unsafe act identified above.
 
 If any of these three conditions is not met, do not code 204E.

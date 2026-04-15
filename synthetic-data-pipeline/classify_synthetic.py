@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 """
-HFACS-BASE Classification Pipeline
+HFACS-BASE Synthetic Validation Pipeline
 
-Classifies BASE jumping fatality reports through a three-layer HFACS framework
-using LLM analysis via the Anthropic API.
-
-Layers:
-  L0 — Top-level classification (human error / other cause / insufficient info)
-  L1 — Unsafe acts (runs on L0=001HE records only)
-  L2 — Preconditions for unsafe acts (runs on records with L1 results)
+Runs the same three-layer HFACS classification as the main pipeline but against
+the 30-record synthetic dataset. Uses live mode only (no batch needed).
+Reads prompts and domain context from the main classification-pipeline.
 """
 
 import argparse
@@ -27,27 +23,23 @@ from dotenv import load_dotenv
 # ---------------------------------------------------------------------------
 
 MODEL = "claude-opus-4-6"
-# temperature/top_p/top_k are incompatible with extended thinking — must be omitted.
 MAX_TOKENS = 35000
 THINKING = {"type": "adaptive"}
-RATE_LIMIT_DELAY = 0.5  # seconds between live API calls
+RATE_LIMIT_DELAY = 0.5
 
 LAYERS = ["L0", "L1", "L2"]
 
 PIPELINE_DIR = Path(__file__).resolve().parent
-PROMPTS_DIR = PIPELINE_DIR / "prompts"
-OUTPUTS_DIR = PIPELINE_DIR / "outputs"
-INPUT_FILE = PIPELINE_DIR.parent / "bfl-scrape" / "bfl_fatalities.jsonl"
-DOMAIN_CONTEXT_FILE = PIPELINE_DIR / "BASE_DOMAIN_CONTEXT.md"
+MAIN_PIPELINE_DIR = PIPELINE_DIR.parent / "classification-pipeline"
+PROMPTS_DIR = MAIN_PIPELINE_DIR / "prompts"
+RUNS_DIR = PIPELINE_DIR / "synthetic-data-output" / "runs"
+INPUT_FILE = PIPELINE_DIR / "synthetic-data-output" / "synthetic-bfl.jsonl"
+DOMAIN_CONTEXT_FILE = MAIN_PIPELINE_DIR / "BASE_DOMAIN_CONTEXT.md"
 HFACS_FILES = {
     "L0": PROMPTS_DIR / "HFACS_L0.md",
     "L1": PROMPTS_DIR / "HFACS_L1.md",
     "L2": PROMPTS_DIR / "HFACS_L2.md",
 }
-
-BATCH_POLL_INITIAL = 30    # seconds
-BATCH_POLL_MAX = 300       # seconds
-BATCH_POLL_FACTOR = 1.5
 
 log = logging.getLogger("hfacs")
 
@@ -256,95 +248,6 @@ def run_layer_live(client, system_prompt, messages):
 
 
 # ---------------------------------------------------------------------------
-# Batch mode
-# ---------------------------------------------------------------------------
-
-def warmup_cache(client, system_prompt):
-    """
-    Establish the prompt cache before submitting a batch.
-
-    Anthropic's docs: "a cache entry only becomes available after the first
-    response begins. If you need cache hits for parallel requests, wait for
-    the first response before sending subsequent requests." Without this,
-    every parallel request in the batch would write its own cache entry
-    instead of sharing a single read.
-
-    Uses thinking=disabled (cheapest possible warmup); per the docs, system
-    prompts and tool definitions remain cached when thinking modes change.
-    """
-    log.info("Warming prompt cache before batch submission...")
-    try:
-        resp = client.messages.create(
-            model=MODEL,
-            max_tokens=16,
-            thinking={"type": "disabled"},
-            system=system_prompt,
-            messages=[{"role": "user", "content": "ready"}],
-        )
-        usage = resp.usage
-        log.info(
-            "Cache warmed: cache_creation_input_tokens=%s, cache_read_input_tokens=%s",
-            getattr(usage, "cache_creation_input_tokens", "?"),
-            getattr(usage, "cache_read_input_tokens", "?"),
-        )
-    except Exception as e:
-        log.warning("Cache warmup failed (%s) — proceeding; batch may not hit cache", e)
-
-
-def run_layer_batch(client, system_prompt, messages):
-    """
-    Submit all messages as a single batch, poll for completion, collect results.
-    messages: list of (record_id, user_message) tuples.
-    Returns list of (record_id, response_or_None, api_error_or_None).
-    """
-    # Warm the prompt cache so the batch's parallel requests share a single cache read
-    warmup_cache(client, system_prompt)
-
-    requests = [
-        {
-            "custom_id": rid,
-            "params": {
-                "model": MODEL,
-                "max_tokens": MAX_TOKENS,
-                "thinking": THINKING,
-                "system": system_prompt,
-                "messages": [{"role": "user", "content": msg}],
-            },
-        }
-        for rid, msg in messages
-    ]
-
-    log.info("Submitting batch: %d requests", len(requests))
-    batch = client.messages.batches.create(requests=requests)
-    log.info("Batch %s created (%s)", batch.id, batch.processing_status)
-
-    # Poll until batch processing ends
-    delay = BATCH_POLL_INITIAL
-    while batch.processing_status != "ended":
-        log.info("Batch %s: %s — next poll in %ds",
-                 batch.id, batch.processing_status, int(delay))
-        time.sleep(delay)
-        delay = min(delay * BATCH_POLL_FACTOR, BATCH_POLL_MAX)
-        batch = client.messages.batches.retrieve(batch.id)
-
-    log.info("Batch %s ended. Counts: %s", batch.id, batch.request_counts)
-
-    # Collect results keyed by custom_id
-    results_map = {}
-    for entry in client.messages.batches.results(batch.id):
-        rid = entry.custom_id
-        if entry.result.type == "succeeded":
-            results_map[rid] = (entry.result.message, None)
-        else:
-            error_detail = getattr(entry.result, "error", entry.result.type)
-            log.error("Batch failed for %s: %s", rid, error_detail)
-            results_map[rid] = (None, str(error_detail))
-
-    # Return in original submission order
-    return [(rid, *results_map.get(rid, (None, "missing from batch results"))) for rid, _ in messages]
-
-
-# ---------------------------------------------------------------------------
 # Layer orchestration
 # ---------------------------------------------------------------------------
 
@@ -379,7 +282,7 @@ def append_error(rid, layer, error_info):
         f.write(json.dumps(entry) + "\n")
 
 
-def run_layer(client, layer, records, mode, l0_results=None, l1_results=None):
+def run_layer(client, layer, records, l0_results=None, l1_results=None):
     """
     Run classification for one layer.
     Returns dict of {record_id: parsed_result}.
@@ -422,11 +325,7 @@ def run_layer(client, layer, records, mode, l0_results=None, l1_results=None):
             msg = format_user_message(r)
         messages.append((rid, msg))
 
-    # Dispatch to live or batch
-    if mode == "live":
-        raw = run_layer_live(client, system_prompt, messages)
-    else:
-        raw = run_layer_batch(client, system_prompt, messages)
+    raw = run_layer_live(client, system_prompt, messages)
 
     # Parse responses and collect results.
     # Failed records are NOT dropped — they're written with an _error marker so
@@ -531,14 +430,18 @@ def merge_results():
 # ---------------------------------------------------------------------------
 
 def main():
-    parser = argparse.ArgumentParser(description="HFACS-BASE classification pipeline")
-    parser.add_argument("--mode", choices=["live", "batch"], default="live",
-                        help="API mode: live (sequential) or batch (50%% cost reduction)")
+    global OUTPUTS_DIR
+
+    parser = argparse.ArgumentParser(description="HFACS-BASE synthetic validation pipeline")
+    parser.add_argument("--run", required=True,
+                        help="Run name (e.g. claude-run-1, openai-run-1)")
     parser.add_argument("--layer", choices=["L0", "L1", "L2", "all"], default="all",
                         help="Layer to run (default: all)")
     parser.add_argument("--limit", type=int, default=None,
                         help="Process only first N records (for testing)")
     args = parser.parse_args()
+
+    OUTPUTS_DIR = RUNS_DIR / args.run
 
     logging.basicConfig(
         level=logging.INFO,
@@ -546,7 +449,6 @@ def main():
         datefmt="%H:%M:%S",
     )
 
-    # Load ANTHROPIC_API_KEY from the repo-root .env (one level above this file)
     load_dotenv(PIPELINE_DIR.parent / ".env")
 
     if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -555,9 +457,9 @@ def main():
         sys.exit(1)
 
     client = anthropic.Anthropic()
-    OUTPUTS_DIR.mkdir(exist_ok=True)
+    OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
+    log.info("Run: %s → %s", args.run, OUTPUTS_DIR)
 
-    # Clear errors file at start of run
     errors_path = OUTPUTS_DIR / "errors.jsonl"
     if errors_path.exists():
         errors_path.unlink()
@@ -569,24 +471,21 @@ def main():
     l1_results = None
 
     for layer in layers_to_run:
-        # Load previous layer results from disk if not already in memory
         if layer == "L1" and l0_results is None:
             l0_results = load_layer_results("L0")
         if layer == "L2" and l1_results is None:
             l1_results = load_layer_results("L1")
 
         results = run_layer(
-            client, layer, records, args.mode,
+            client, layer, records,
             l0_results=l0_results, l1_results=l1_results,
         )
 
-        # Keep in memory for subsequent layers in this run
         if layer == "L0":
             l0_results = results
         elif layer == "L1":
             l1_results = results
 
-    # Merge whenever L0 results exist on disk
     if (OUTPUTS_DIR / "L0_results.jsonl").exists():
         merge_results()
 

@@ -1,6 +1,6 @@
-# Layer 1: Unsafe Acts
+**Layer 1: Unsafe Acts**
 
-## Active Failure Test
+**Active Failure Test**
 
 A factor is coded at Layer 1 if its direct effect produced the fatal outcome. The question is: was this factor the mechanism through which the jumper died?
 
@@ -12,7 +12,7 @@ An omission that would merely have detected or prevented a separate producing fa
 
 When multiple factors are present, identify which factor or factors actually produced the fatal outcome through their own direct effect. These are coded at Layer 1. All other contributing factors are candidates for Layer 2.
 
-## Category Discrimination
+**Category Discrimination**
 
 Layer 1 has three categories of unsafe acts, distinguished by where the failure lies:
 
@@ -33,7 +33,7 @@ If the jumper decided to jump in adverse conditions that were observable before 
 The following labels are provided as reference. Report the most applicable label if one fits, or describe the decision error in your own terms.
 
 - **Wrong procedure applied:** The jumper applied an incorrect defined procedure to a recognized situation, such as the wrong emergency response to a malfunction type, or an incorrect packing configuration for the jump type.
-- **Poor judgment or risk acceptance:** The jumper selected an inappropriate course of action in a situation requiring judgment. This includes choosing to jump in conditions that exceed safe limits, selecting an object beyond the jumper's current ability, choosing a flight line with insufficient margin, attempting maneuvers without sufficient proficiency, or choosing to deploy at a dangerously low altitude.
+- **Poor judgment or risk acceptance:** The jumper selected an inappropriate course of action in a situation requiring judgment, This includes choosing to jump in conditions that exceed safe limits, selecting an object beyond the jumper's current ability, choosing a flight line with insufficient margin, attempting maneuvers without sufficient proficiency or choosing to deploy at a dangerously low altitude.
 - **Improvised response to novel situation:** The jumper faced a compound or cascading emergency for which no practiced procedure existed and devised a real-time solution that proved inadequate.
 
 ## 1.2 Skill-Based Errors (102S)

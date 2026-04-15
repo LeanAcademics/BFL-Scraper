@@ -1,8 +1,8 @@
-# Layer 2: Preconditions for Unsafe Acts
+**Layer 2: Precondition for Unsafe Acts**
 
 The following unsafe acts were identified at Layer 1: **{L1 result inserted here}**
 
-## Precondition (Layer 2) Test
+**Precondition (Layer 2) Test**
 
 A factor is coded at Layer 2 if it contributed to or enabled the Layer 1 unsafe act identified above, but its own direct effect was not the mechanism that produced the fatal outcome.
 
@@ -15,7 +15,7 @@ Preconditions include:
 
 A precondition is coded only if it contributed to the specific Layer 1 unsafe act above. A factor that was present but did not contribute to the identified unsafe act is not coded.
 
-## Label Coding
+**Label Coding**
 
 Each Layer 2 subcategory contains reference labels that describe common preconditions in BASE jumping fatalities. When coding a precondition:
 
@@ -41,7 +41,7 @@ Failures in the jumper's attention management that negatively affected perceptio
 
 ### 2.1.2 State of Mind Conditions (201C2)
 
-Psychological or motivational states that affected the jumper's judgment or willingness to act prudently, contributing to the unsafe act. These are enduring or situational mental states, not attention management failures (which fall under Mental Awareness) or physiological impairments (which fall under Adverse Physiological Conditions). The following codes are provided as reference. Code according to Label Coding.
+Psychological or motivational states that affected the jumper's judgment or willingness to act prudently, contributing to the unsafe act. These are enduring or situational mental states, not attention management failures (which fall under Mental Awareness) or physiological impairments (which fall under Adverse Physiological Conditions).The following codes are provided as reference. Code according to Label Coding.
 
 - **Psychological Disorder:** A diagnosable psychological condition that impaired the jumper's judgment or decision-making capacity.
 - **Life Stressors/Emotional State:** External life circumstances (work, relationships, financial or legal stress, grief) impaired the jumper's cognitive performance or judgment on the day of the jump.
@@ -88,8 +88,8 @@ The jumper's training, experience, or currency was insufficient for the demands 
 
 Environmental factors that directly degraded the jumper's performance during execution and contributed to the identified Layer 1 unsafe act. Code 204E only if all three of the following conditions are met:
 
-1. The environmental factor was not the object of the jump decision. If the jumper decided to jump in adverse conditions that were observable before the jump, the environment is the content of a decision error at Layer 1 and is not coded here.
-2. The environmental factor degraded the jumper's performance during execution. The environment must have actively impaired the jumper's ability to perform, not merely been the setting in which an error occurred.
+1. The environmental factor is not already captured as the content of a Layer 1 decision error. If the environmental conditions are coded as the basis of a 101D act (e.g., the jumper decided to jump in observable strong winds, and the wind produced the fatal outcome), the same factor is not additionally coded as 204E. If the environmental factor contributed to a Layer 1 act of a different category (102S or 103O), it may be coded as 204E because L1 and L2 are describing different things: the error and the condition that degraded performance.
+2. The environmental factor degraded the jumper's performance during execution of the L1 factor. The environment must have actively impaired the jumper's ability to perform, not merely been the setting in which an error occurred.
 3. The environmental factor contributed to the specific Layer 1 unsafe act identified above.
 
 If any of these three conditions is not met, do not code 204E.
