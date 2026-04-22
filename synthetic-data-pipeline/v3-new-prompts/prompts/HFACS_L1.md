@@ -22,31 +22,31 @@ Layer 1 has three categories of unsafe acts, distinguished by where the failure 
 
 Apply this axis first: Was the problem in what the jumper decided, in how the jumper executed, or in what the jumper perceived?
 
-Identify all applicable unsafe acts from the following categories. For each, report the most suitable subcategory or multiple subcategories if distinct. When coding multiple unsafe acts, each entry must describe a distinct action or failure. Do not code the same act twice under different labels. If the narrative supports the category but not a specific subcategory, report only the category (101D, 102S, 103O, 104II).
+Identify all applicable unsafe acts from the following categories. When coding multiple unsafe acts, each entry must describe a distinct action or failure. Do not code the same act twice under different labels. If the narrative supports the category but not a specific characterization, report only the category (101D, 102S, 103O, 104II).
 
-## 1.1 Decision Errors (101D)
+### 1.1 Decision Errors (101D)
 
 The jumper consciously selected a course of action that was inadequate or inappropriate for the situation. The decision proceeded as intended, but the decision itself was the problem. This includes both decisions made before the jump (planning-level decisions that were the direct producing mechanism, not merely preconditions) and decisions made during the jump under time pressure.
 
-If the jumper decided to jump in adverse conditions that were observable before the jump (weather, wind, visibility, site hazards), the conditions are the content of this decision error and are not coded under Environmental Conditions 204E. If the jumper decided to proceed with the jump rather than abort and hike down despite conditions warranting an abort, this is a decision error.
+If the jumper decided to jump in adverse conditions that were observable before the jump (weather, wind, visibility, site hazards), and the decision alone was sufficient to produce the fatal outcome regardless of subsequent execution quality, the conditions are the content of this decision error and are not coded under Environmental Conditions 204E.
 
-The following labels are provided as reference. Report the most applicable label if one fits, or describe the decision error in your own terms.
+The following are common examples. Use or adapt a label if applicable, or describe the decision error in your own terms.
 
-- **Wrong procedure applied:** The jumper applied an incorrect defined procedure to a recognized situation, such as the wrong emergency response to a malfunction type, or an incorrect packing configuration for the jump type.
-- **Poor judgment or risk acceptance:** The jumper selected an inappropriate course of action in a situation requiring judgment, This includes choosing to jump in conditions that exceed safe limits, selecting an object beyond the jumper's current ability, choosing a flight line with insufficient margin, attempting maneuvers without sufficient proficiency or choosing to deploy at a dangerously low altitude.
+- **Wrong procedure applied:** The jumper applied an incorrect procedure to a recognized situation.
+- **Poor judgment or risk acceptance:** The jumper selected an inappropriate course of action in a situation requiring judgment.
 - **Improvised response to novel situation:** The jumper faced a compound or cascading emergency for which no practiced procedure existed and devised a real-time solution that proved inadequate.
 
-## 1.2 Skill-Based Errors (102S)
+### 1.2 Skill-Based Errors (102S)
 
 The jumper intended the correct outcome and selected an appropriate course of action, but failed in the physical or cognitive execution. The plan was adequate. The performance was not.
 
-The following labels are provided as reference. Report the most applicable label if one fits cleanly, or describe the skill-based error in your own terms.
+The following are common examples. Use or adapt a label if applicable, or describe the skill-based error in your own terms.
 
-- **Attention failure:** The jumper failed to monitor or respond to critical information during execution. The information was available but the jumper did not attend to it. Includes losing altitude awareness during freefall and failing to assess terrain proximity during wingsuit flight.
-- **Memory failure:** The jumper failed to perform an action they knew to be necessary and intended to perform. This is not about forgetting a step in a formal checklist but about failing to carry out something the jumper would have done if reminded. Includes forgetting to connect the pilot chute to the bridle after a repack, leaving a packing tool inside the container, or forgetting a planned deployment altitude. Coded here only if the omission produced the fatal outcome (see Active Failure Test).
-- **Technique error:** The jumper attempted the correct action but executed it with inadequate technique. Includes poor body position at exit or deployment, incorrect packing technique, weak pilot chute throw, and poor tracking or flight technique resulting in insufficient separation.
+- **Attention failure:** The jumper failed to monitor or respond to critical information that was available during execution.
+- **Memory failure:** The jumper failed to perform an action they knew to be necessary and intended to perform. Coded only if the omission produced the fatal outcome (see Active Failure Test).
+- **Technique error:** The jumper attempted the correct action but executed it with inadequate technique.
 
-## 1.3 Perceptual Errors (103O)
+### 1.3 Perceptual Errors (103O)
 
 Do not code 103O unless the narrative identifies or clearly implies a specific perceptual mechanism that distorted the jumper's perception. General misjudgment of altitude, distance, or speed without a stated perceptual cause is a decision error (101D) or skill-based error (102S), not a perceptual error.
 
@@ -59,7 +59,7 @@ Qualifying perceptual mechanisms include:
 
 If neither of these mechanisms (or an equivalent specific sensory distortion) is present in the narrative, do not code 103O.
 
-## 1.4 Insufficient Information (104II)
+### 1.4 Insufficient Information (104II)
 
 The narrative is too short, vague, or ambiguous to determine one or multiple active human errors present.
 

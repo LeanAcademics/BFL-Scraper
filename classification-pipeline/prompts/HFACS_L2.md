@@ -13,7 +13,7 @@ Preconditions include:
 - Omissions that failed to detect or prevent the L1 failure but did not themselves produce the outcome (omitted gear check, failure to correct a known deficiency)
 - Environmental factors that impaired performance during execution
 
-A precondition is coded only if it contributed to the specific Layer 1 unsafe act above. A factor that was present but did not contribute to the identified unsafe act is not coded.
+A precondition is coded only if it contributed to the specific Layer 1 unsafe act above. If no preconditions are supported by the narrative with sufficient evidence, return an empty L2_preconditions array. An empty array is a valid and expected outcome. Not all unsafe acts have identifiable preconditions in the narrative. Do not infer preconditions solely to avoid returning an empty result.
 
 **Label Coding**
 
