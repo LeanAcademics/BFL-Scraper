@@ -1,0 +1,147 @@
+23:38:14 [INFO] Run output dir: /Users/leanstein/Desktop/Thesis_Scrape/synthetic-data-pipeline/v7/output-gpt
+23:38:14 [INFO] Config: model=gpt-5.4, reasoning_effort=none, temperature=0.3
+23:38:14 [INFO] Loaded 30 records from /Users/leanstein/Desktop/Thesis_Scrape/synthetic-data-pipeline/v7/synthetic-bfl.jsonl
+23:38:14 [INFO] L0: system prompt 105314 chars, 30 eligible records
+23:38:14 [INFO] [1/30] SYN-CS01
+23:38:17 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:19 [INFO] [2/30] SYN-CS02
+23:38:20 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:22 [INFO] [3/30] SYN-CS03
+23:38:23 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:25 [INFO] [4/30] SYN-CS04
+23:38:27 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:28 [INFO] [5/30] SYN-CS05
+23:38:29 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:31 [INFO] [6/30] SYN-CS06
+23:38:35 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:37 [INFO] [7/30] SYN-CS07
+23:38:39 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:40 [INFO] [8/30] SYN-CS08
+23:38:41 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:43 [INFO] [9/30] SYN-CS09
+23:38:45 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:47 [INFO] [10/30] SYN-CS10
+23:38:48 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:50 [INFO] [11/30] SYN-CS11
+23:38:51 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:53 [INFO] [12/30] SYN-CS12
+23:38:54 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:56 [INFO] [13/30] SYN-CS13
+23:38:57 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:38:58 [INFO] [14/30] SYN-CS14
+23:39:00 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:01 [INFO] [15/30] SYN-CS15
+23:39:06 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:08 [INFO] [16/30] SYN-CS16
+23:39:09 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:11 [INFO] [17/30] SYN-CS17
+23:39:12 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:14 [INFO] [18/30] SYN-CS18
+23:39:15 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:17 [INFO] [19/30] SYN-CS19
+23:39:18 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:20 [INFO] [20/30] SYN-CS20
+23:39:21 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:23 [INFO] [21/30] SYN-N01
+23:39:25 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:26 [INFO] [22/30] SYN-N02
+23:39:27 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:28 [INFO] [23/30] SYN-N03
+23:39:29 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:31 [INFO] [24/30] SYN-N04
+23:39:32 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:34 [INFO] [25/30] SYN-N05
+23:39:34 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:36 [INFO] [26/30] SYN-N06
+23:39:37 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:39 [INFO] [27/30] SYN-N07
+23:39:40 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:42 [INFO] [28/30] SYN-N08
+23:39:43 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:44 [INFO] [29/30] SYN-N09
+23:39:45 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:46 [INFO] [30/30] SYN-N10
+23:39:49 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:50 [INFO] L0 done — eligible: 30, succeeded: 30, failed: 0 ({'max_tokens': 0, 'json_parse': 0, 'no_text': 0, 'api_error': 0})
+23:39:50 [INFO] Loaded 30 L0 results
+23:39:50 [INFO] L1: 18 records with L0=001HE
+23:39:50 [INFO] L1: system prompt 106808 chars, 18 eligible records
+23:39:50 [INFO] [1/18] SYN-CS01
+23:39:51 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:53 [INFO] [2/18] SYN-CS02
+23:39:54 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:56 [INFO] [3/18] SYN-CS07
+23:39:57 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:39:59 [INFO] [4/18] SYN-CS08
+23:40:00 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:02 [INFO] [5/18] SYN-CS09
+23:40:03 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:04 [INFO] [6/18] SYN-CS10
+23:40:05 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:07 [INFO] [7/18] SYN-CS11
+23:40:07 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:09 [INFO] [8/18] SYN-CS12
+23:40:10 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:12 [INFO] [9/18] SYN-CS13
+23:40:13 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:15 [INFO] [10/18] SYN-CS14
+23:40:16 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:18 [INFO] [11/18] SYN-CS15
+23:40:19 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:21 [INFO] [12/18] SYN-CS16
+23:40:21 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:24 [INFO] [13/18] SYN-CS17
+23:40:25 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:27 [INFO] [14/18] SYN-CS18
+23:40:28 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:30 [INFO] [15/18] SYN-CS19
+23:40:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:34 [INFO] [16/18] SYN-CS20
+23:40:37 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:38 [INFO] [17/18] SYN-N09
+23:40:39 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:40 [INFO] [18/18] SYN-N10
+23:40:42 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:43 [INFO] L1 done — eligible: 18, succeeded: 18, failed: 0 ({'max_tokens': 0, 'json_parse': 0, 'no_text': 0, 'api_error': 0})
+23:40:43 [INFO] Loaded 18 L1 results
+23:40:43 [INFO] L2: 17 records with actionable L1 act
+23:40:43 [INFO] L2: system prompt 112556 chars, 17 eligible records
+23:40:43 [INFO] [1/17] SYN-CS01
+23:40:44 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:46 [INFO] [2/17] SYN-CS02
+23:40:47 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:49 [INFO] [3/17] SYN-CS07
+23:40:51 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:53 [INFO] [4/17] SYN-CS08
+23:40:54 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:57 [INFO] [5/17] SYN-CS09
+23:40:58 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:01 [INFO] [6/17] SYN-CS10
+23:41:02 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:04 [INFO] [7/17] SYN-CS11
+23:41:05 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:06 [INFO] [8/17] SYN-CS12
+23:41:08 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:09 [INFO] [9/17] SYN-CS13
+23:41:10 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:13 [INFO] [10/17] SYN-CS14
+23:41:14 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:17 [INFO] [11/17] SYN-CS15
+23:41:18 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:20 [INFO] [12/17] SYN-CS16
+23:41:21 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:23 [INFO] [13/17] SYN-CS17
+23:41:25 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:28 [INFO] [14/17] SYN-CS18
+23:41:28 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:32 [INFO] [15/17] SYN-CS19
+23:41:34 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:37 [INFO] [16/17] SYN-CS20
+23:41:38 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:40 [INFO] [17/17] SYN-N09
+23:41:41 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+23:41:42 [INFO] L2 done — eligible: 17, succeeded: 17, failed: 0 ({'max_tokens': 0, 'json_parse': 0, 'no_text': 0, 'api_error': 0})
+23:41:42 [INFO] Loaded 30 L0 results
+23:41:42 [INFO] Loaded 18 L1 results
+23:41:42 [INFO] Loaded 17 L2 results
+23:41:42 [INFO] Merged 30 records → /Users/leanstein/Desktop/Thesis_Scrape/synthetic-data-pipeline/v7/output-gpt/classification_results.jsonl

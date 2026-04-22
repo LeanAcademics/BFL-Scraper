@@ -428,7 +428,7 @@ All 30 synthetic BASE fatality records paired with their hand-coded HFACS-BASE g
 - `101D` — **Decided to jump in zero visibility conditions**
 
 **L2 — Preconditions:**
-- `201C1` → linked to `101D` — **Complacency from site familiarity**
+- `201C2` → linked to `101D` — **Complacency from site familiarity**
 
 ---
 
