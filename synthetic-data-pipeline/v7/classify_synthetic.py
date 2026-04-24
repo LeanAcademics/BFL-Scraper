@@ -1,24 +1,5 @@
 #!/usr/bin/env python3
-"""
-HFACS-BASE Synthetic Validation Pipeline — v7.
-
-Prompt files live at the folder root:
-  base_system.md, HFACS_L0.md, HFACS_L1.md, HFACS_L2.md
-Category examples are inline in the HFACS layer prompts (no separate examples
-file).
-
-System prompt per layer:
-  base_system + BASE_DOMAIN_CONTEXT + HFACS_L{layer}
-
-L1 insufficient-info category is 103II. L2 is skipped when every L1 act is
-103II (no identified unsafe act to hang preconditions on).
-
-For L2, the L1 result is injected into the user message (not the system
-prompt) so the cached system block stays identical across records.
-
-Data (synthetic-bfl.jsonl, ground-truth.jsonl) is local to this folder.
-BASE_DOMAIN_CONTEXT.md is read from the main classification-pipeline folder.
-"""
+"""HFACS-BASE classification over synthetic fatality records (v7)."""
 
 import argparse
 import json
@@ -30,10 +11,6 @@ from pathlib import Path
 
 import anthropic
 from dotenv import load_dotenv
-
-# ---------------------------------------------------------------------------
-# Configuration
-# ---------------------------------------------------------------------------
 
 MODEL = "claude-opus-4-6"
 MAX_TOKENS = 35000
@@ -60,7 +37,7 @@ HFACS_FILES = {
 
 log = logging.getLogger("hfacs")
 
-# Fields included in user messages (Name excluded for privacy)
+# Name is excluded from the model input for privacy.
 STRUCTURED_FIELDS = [
     "BFL entry nr.", "Date", "Time", "Age", "Nationality", "Location",
     "Category", "Object Type", "Base seasons", "Skydives", "WS Skydives",
@@ -68,10 +45,6 @@ STRUCTURED_FIELDS = [
     "Packing & Setup", "Weather", "Possible Factors", "Cause of Death",
 ]
 
-
-# ---------------------------------------------------------------------------
-# Data loading
-# ---------------------------------------------------------------------------
 
 def load_records(path, limit=None):
     records = []
@@ -102,10 +75,6 @@ def load_layer_results(layer):
     return results
 
 
-# ---------------------------------------------------------------------------
-# Message formatting
-# ---------------------------------------------------------------------------
-
 def fmt_value(value):
     if value is None:
         return "Not reported"
@@ -131,15 +100,9 @@ def format_l2_message(record, l1_result):
     return base
 
 
-# ---------------------------------------------------------------------------
-# System prompt construction
-# ---------------------------------------------------------------------------
-
 def build_system_prompt(layer):
-    """
-    Assemble: base_system -> BASE_DOMAIN_CONTEXT -> HFACS_L{layer}.
-    One ephemeral cache_control block, 1h TTL.
-    """
+    # One cached text block so the ~28k-token prefix is read from cache
+    # on every record after the first.
     base = BASE_SYSTEM_FILE.read_text()
     domain = DOMAIN_CONTEXT_FILE.read_text()
     hfacs = HFACS_FILES[layer].read_text()
@@ -156,10 +119,6 @@ def build_system_prompt(layer):
 def system_prompt_chars(system_prompt):
     return sum(len(b["text"]) for b in system_prompt)
 
-
-# ---------------------------------------------------------------------------
-# Response parsing
-# ---------------------------------------------------------------------------
 
 def parse_response(response):
     text = None
@@ -217,15 +176,9 @@ def parse_response(response):
         }
 
 
-# ---------------------------------------------------------------------------
-# Live mode
-# ---------------------------------------------------------------------------
-
 def call_live(client, system_prompt, user_msg):
-    """
-    Streaming is required: the combined prefix + max_tokens may exceed the
-    10-minute non-streaming limit.
-    """
+    # Streaming is required: prefix + max_tokens can exceed the 10-minute
+    # non-streaming ceiling.
     with client.messages.stream(
         model=MODEL,
         max_tokens=MAX_TOKENS,
@@ -252,10 +205,6 @@ def run_layer_live(client, system_prompt, messages):
     return results
 
 
-# ---------------------------------------------------------------------------
-# Layer orchestration
-# ---------------------------------------------------------------------------
-
 def get_record_id(record):
     return record["BFL entry nr."]
 
@@ -278,7 +227,6 @@ def append_error(rid, layer, error_info):
 
 
 def _l1_has_actionable_act(l1_rec):
-    """True iff L1 contains at least one non-103II unsafe act."""
     acts = l1_rec.get("L1_unsafe_acts") or []
     return any(a.get("category") != L1_INSUFFICIENT_CATEGORY for a in acts)
 
@@ -385,10 +333,6 @@ def run_layer(client, layer, records, l0_results=None, l1_results=None, only=Non
     return parsed
 
 
-# ---------------------------------------------------------------------------
-# Merge
-# ---------------------------------------------------------------------------
-
 def merge_results():
     l0 = load_layer_results("L0")
     l1_path = OUTPUTS_DIR / "L1_results.jsonl"
@@ -424,10 +368,6 @@ def merge_results():
     write_jsonl(out, merged)
     log.info("Merged %d records → %s", len(merged), out)
 
-
-# ---------------------------------------------------------------------------
-# CLI
-# ---------------------------------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser(description="HFACS-BASE synthetic validation — v7")

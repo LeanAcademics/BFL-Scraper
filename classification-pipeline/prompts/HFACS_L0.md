@@ -25,5 +25,5 @@ Neither 001HE nor 002OC can be supported by the narrative. The narrative does no
 Return valid JSON only:
 
 ```
-{"record_id": "<BFL number>", "L0_classification": "<001HE|002OC|003II>", "L0_description": "<1-3 sentence basis for classification>"}
+{"record_id": "", "L0_classification": "<001HE|002OC|003II>", "L0_label": "<2-6 word label>", "L0_description": "<1-3 sentence basis>"}
 ```
