@@ -9,7 +9,7 @@ import csv
 import json
 
 INPUT = "bfl_fatalities.csv"
-OUTPUT = "bfl_fatalities.jsonl"
+OUTPUT = "bfl_fatalities_unclean.jsonl"
 
 # Fields that contain semicolon-separated lists → convert to arrays
 LIST_FIELDS = ["Weather", "Possible Factors"]
