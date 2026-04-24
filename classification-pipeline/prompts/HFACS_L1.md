@@ -1,78 +1,52 @@
-**Layer 1: Unsafe Acts**
+# HFACS_L1
 
-**Active Failure Test**
+# Layer 1: Unsafe Acts
 
-A factor is coded at Layer 1 if its direct effect produced the fatal outcome. The question is: was this factor the mechanism through which the jumper died?
+Identify the unsafe act(s) that produced the fatal outcome.
 
-An action qualifies when the action itself generated the conditions that killed the jumper. A pre-jump decision qualifies as a Layer 1 active failure only if the decision alone was sufficient to produce the fatal outcome regardless of subsequent execution quality. If the jumper could have survived by executing correctly after making the decision, the decision is a precondition (Layer 2) and the execution failure is the Layer 1 active failure.
+## Active Failure Test
 
-An omission qualifies as an active failure only if the omitted action would itself have produced a safe outcome. Failing to deploy the parachute qualifies because deploying would have produced survival.
+A factor is coded at Layer 1 if it was the mechanism through which the jumper died.
 
-An omission that would merely have detected or prevented a separate producing failure is not an active failure. Omitting a gear check that would have caught a packing error did not produce the deployment failure; the packing error did. The omitted gear check is a precondition (Layer 2), not an unsafe act.
+An action qualifies when the error itself generated the conditions that killed the jumper. An omission qualifies as an active failure only if the omitted action would itself have directly produced survival (e.g. failing to deploy the parachute). 
 
-When multiple factors are present, identify which factor or factors actually produced the fatal outcome through their own direct effect. These are coded at Layer 1. All other contributing factors are candidates for Layer 2.
+An omission that would have detected or prevented a separate error is not an active failure but a precondition (Layer 2).
 
-**Category Discrimination**
+When multiple factors are present, identify which factor(s) actually produced the fatal outcome through their own direct effect. All other contributing factors are candidates for Layer 2.
 
-Layer 1 has three categories of unsafe acts, distinguished by where the failure lies:
+## Category Discrimination
 
-- **Decision Errors (101D):** The jumper's chosen course of action was wrong for the situation. The problem was the plan, the choice, or the decision, not the execution.
-- **Skill-Based Errors (102S):** The jumper's chosen course of action was appropriate but execution failed. The problem was physical or cognitive performance, not what was decided.
-- **Perceptual Errors (103O):** The jumper acted on a false sensory perception caused by a specific identifiable perceptual mechanism. The action was consistent with what the jumper perceived, but perception did not match reality.
+Apply this axis first: Was the problem in what the jumper decided, or in how the jumper executed?
 
-Apply this axis first: Was the problem in what the jumper decided, in how the jumper executed, or in what the jumper perceived?
+If the fatal outcome resulted from how the jumper performed during the task rather than from the choice of task itself, the error is 102S. The difficulty or risk level of the chosen task does not make the decision a decision error. If the jumper could have survived this jump with correct execution, code 102S — even if the jumper should not have attempted the jump at all.
 
-Identify all applicable unsafe acts from the following categories. For each, report the most suitable subcategory or multiple subcategories if distinct. When coding multiple unsafe acts, each entry must describe a distinct action or failure. Do not code the same act twice under different labels. If the narrative supports the category but not a specific subcategory, report only the category (101D, 102S, 103O, 104II).
+## 101D - Decision Errors
 
-## 1.1 Decision Errors (101D)
+The jumper consciously selected a course of action that was inadequate or inappropriate for the situation in a way that is independent of execution quality. The execution proceeded as intended, but the decision itself was the problem.
 
-The jumper consciously selected a course of action that was inadequate or inappropriate for the situation. The decision proceeded as intended, but the decision itself was the problem. This includes both decisions made before the jump (planning-level decisions that were the direct producing mechanism, not merely preconditions) and decisions made during the jump under time pressure.
+**Critical: 101D requires that the decision was clearly and specifically wrong, not merely that it involved risk.** BASE jumping is inherently dangerous. Every jumper decides to accept risk. Code 101D only when the narrative establishes that the specific decision was identifiably, substantially wrong given the information available to the jumper at the time, and that decision was the producing mechanism. The decision must stand out as a clear departure from what a competent jumper with the same information would have done.
 
-If the jumper decided to jump in adverse conditions that were observable before the jump (weather, wind, visibility, site hazards), the conditions are the content of this decision error and are not coded under Environmental Conditions 204E. If the jumper decided to proceed with the jump rather than abort and hike down despite conditions warranting an abort, this is a decision error.
+Do not code 101D merely because the jumper decided to perform the jump and died. Do not code 101D because a different decision would have prevented the death. The specific decision, its parameters, or its context must be demonstrably inadequate.
 
-The following labels are provided as reference. Report the most applicable label if one fits, or describe the decision error in your own terms.
+Common examples (not exhaustive, classify based on the definition):
+- Wrong procedure applied to a recognized situation
+- Judgment or risk acceptance that was clearly and specifically inappropriate
+- Improvised response to a novel or cascading emergency that proved inadequate
 
-- **Wrong procedure applied:** The jumper applied an incorrect defined procedure to a recognized situation, such as the wrong emergency response to a malfunction type, or an incorrect packing configuration for the jump type.
-- **Poor judgment or risk acceptance:** The jumper selected an inappropriate course of action in a situation requiring judgment, This includes choosing to jump in conditions that exceed safe limits, selecting an object beyond the jumper's current ability, choosing a flight line with insufficient margin, attempting maneuvers without sufficient proficiency or choosing to deploy at a dangerously low altitude.
-- **Improvised response to novel situation:** The jumper faced a compound or cascading emergency for which no practiced procedure existed and devised a real-time solution that proved inadequate.
+## 102S - Performance/Skill-Based Errors
 
-## 1.2 Skill-Based Errors (102S)
+The jumper intended the correct outcome and selected an appropriate course of action, but failed in the physical or cognitive execution. The performance was insufficient.
 
-The jumper intended the correct outcome and selected an appropriate course of action, but failed in the physical or cognitive execution. The plan was adequate. The performance was not.
+Common examples (not exhaustive, classify based on the definition):
+- Attention failure: failed to monitor or respond to critical information available during execution
+- Memory failure: failed to perform an action they knew to be necessary and intended to perform (coded only if the omission produced the fatal outcome)
+- Technique error: Executed the attempted action with inadequate technique
+- Execution error: Failed to execute the action as intended (includes unstable exit, missed pulls)
 
-The following labels are provided as reference. Report the most applicable label if one fits cleanly, or describe the skill-based error in your own terms.
+## 103II - Insufficient Information
 
-- **Attention failure:** The jumper failed to monitor or respond to critical information during execution. The information was available but the jumper did not attend to it. Includes losing altitude awareness during freefall and failing to assess terrain proximity during wingsuit flight.
-- **Memory failure:** The jumper failed to perform an action they knew to be necessary and intended to perform. This is not about forgetting a step in a formal checklist but about failing to carry out something the jumper would have done if reminded. Includes forgetting to connect the pilot chute to the bridle after a repack, leaving a packing tool inside the container, or forgetting a planned deployment altitude. Coded here only if the omission produced the fatal outcome (see Active Failure Test).
-- **Technique error:** The jumper attempted the correct action but executed it with inadequate technique. Includes poor body position at exit or deployment, incorrect packing technique, weak pilot chute throw, and poor tracking or flight technique resulting in insufficient separation.
+Human error is established (L0 = 001HE) but the narrative does not provide enough detail to determine whether the error was a decision error or a performance error. Provide a brief description of what the narrative states about the circumstances.
 
-## 1.3 Perceptual Errors (103O)
+## Output
 
-Do not code 103O unless the narrative identifies or clearly implies a specific perceptual mechanism that distorted the jumper's perception. General misjudgment of altitude, distance, or speed without a stated perceptual cause is a decision error (101D) or skill-based error (102S), not a perceptual error.
-
-A perceptual error is coded when the jumper's action or inaction was based on a false perception of the environment produced by a specific sensory distortion. The jumper acted consistently with what they perceived, but their perception did not match reality. The error is the action taken on faulty sensory input, not the sensory degradation itself (which is coded as a precondition under Adverse Physiological Conditions 201C3 if applicable).
-
-Qualifying perceptual mechanisms include:
-
-- **Visual illusion:** Environmental conditions (flat light, snow cover, leafless vegetation, featureless terrain, fog blending sky and ground) caused the jumper to misperceive altitude, distance, or terrain proximity. The jumper flew or deployed at what they believed was a safe altitude or distance, but the visual environment made the terrain appear farther than it was.
-- **Vestibular/spatial disorientation:** Loss of spatial orientation during tumble, spin, or in visually impoverished conditions caused the jumper to misperceive their body position, heading, or proximity to the object. The jumper attempted to act (deploy, track, correct) based on a false sense of orientation.
-
-If neither of these mechanisms (or an equivalent specific sensory distortion) is present in the narrative, do not code 103O.
-
-## 1.4 Insufficient Information (104II)
-
-The narrative is too short, vague, or ambiguous to determine one or multiple active human errors present.
-
-Provide a brief qualitative description of what the narrative states about the circumstances of the fatal outcome, without coding any specific unsafe act category.
-
-At L1, 104II means human error is established but the narrative does not provide enough detail to distinguish whether the error was a decision error, skill-based error, or perceptual error. If the narrative makes clear that a human error occurred, code 104II rather than forcing a specific category.
-
-## Output Format
-
-Return valid JSON only:
-
-```
-{"record_id": "<BFL number>", "L1_unsafe_acts": [{"category": "<101D|102S|103O>", "label": "<reference label or custom 3-8 word label>", "description": "<what the jumper did/failed to do that produced the fatal outcome, 2-4 sentences>"}], "L1_insufficient": <true|false>}
-```
-
-If 104II: L1_unsafe_acts is an empty array and L1_insufficient is true.
+{"record_id": "", "L1_unsafe_acts": [{"category": "<101D|102S|103II>", "label": "<reference label or custom 3-5 word label>", "description": "<1-3 sentences grounded in narrative evidence>"}]}
